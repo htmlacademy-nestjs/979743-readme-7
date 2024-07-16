@@ -1,2 +1,4 @@
-//export * from './lib/core';
-// Ре-экспорт модулей из `./lib`
+export { Entity } from './base/entity';
+
+export { User } from './types/user.interface';
+export { AuthUser } from './types/auth-user.interface';
