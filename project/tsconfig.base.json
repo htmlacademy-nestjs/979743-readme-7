@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@project/authentication": ["libs/user/authentication/src/index.ts"],
       "@project/core": ["libs/shared/core/src/index.ts"],
       "@project/helpers": ["libs/shared/helpers/src/index.ts"]
     }
