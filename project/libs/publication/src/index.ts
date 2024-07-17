@@ -1,1 +1,1 @@
-// export * from './lib/publication';
+export { PublicationModule } from './publication.module';
