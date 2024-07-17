@@ -1,4 +1,4 @@
-import { PostBase } from './post-base.interface';
+import { PostBase } from './post.interface';
 
 export interface PostVideo extends PostBase {
   title: string;
