@@ -1,5 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { Expose } from 'class-transformer';
+import { PublicationRepository } from './publication.repository';
 
 @Injectable()
-export class PublicationService {}
+export class PublicationService {
+  constructor(
+    private readonly publicationRepository: PublicationRepository
+  ) {}
+}
