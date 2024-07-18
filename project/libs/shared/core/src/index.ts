@@ -4,3 +4,5 @@ export { EntityFactory } from './interfaces/entity-factory.interface'
 
 export { User } from './types/user.interface';
 export { AuthUser } from './types/auth-user.interface';
+export { Post } from './types/post.interface';
+export { PostStatus } from './types/post-status.enam';
