@@ -1,0 +1,12 @@
+
+POST http://localhost:3000/api/post/new HTTP/1.1
+Content-Type: application/json
+
+{
+  "quoteText": "какая-то очень древняя и очень мудрая мысль",
+  "quoteAuthor": "творчество народное",
+  "tags": ["#dfvdfv", "#fvdfvdfv"],
+  "type": "quote"
+}
+
+###

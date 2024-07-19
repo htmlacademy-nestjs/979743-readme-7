@@ -9,7 +9,7 @@ import { PublicationEntity } from './publication.entity';
 export class PublicationService {
   constructor(private readonly publicationRepository: PublicationRepository) {}
 
-  public async createPost(dto: CreatePublicationDto) {
+  public async createPost(dto: CreatePublicationDto): Promise<PublicationEntity> {
     const {
       type,
       tags,
@@ -46,6 +46,8 @@ export class PublicationService {
 
     const publicationEntity = await new PublicationEntity(post);
 
-    return this.publicationRepository.save(publicationEntity);
+    this.publicationRepository.save(publicationEntity);
+
+    return publicationEntity;
   }
 }
