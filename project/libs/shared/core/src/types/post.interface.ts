@@ -1,11 +1,14 @@
 import { PostStatus } from './post-status.enam';
+import { PostType } from './post-type.enam';
 
 export interface Post {
   id?: string;
+  type: PostType;
   author: string;
   createDate: Date;
-  status: PostStatus;
-  tags?: string[]; 
+  lastEditDate: Date;
+  postStatus: PostStatus;
+  tags?: string[];
   link?: string;
   linkDescription?: string;
   photo?: string;
