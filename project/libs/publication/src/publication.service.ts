@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import dayjs = require('dayjs');
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PublicationRepository } from './publication.repository';
 import { CreatePublicationDto } from './dto/create-publication.dto';
-import dayjs = require('dayjs');
 import { PostStatus } from '@project/core';
 import { PublicationEntity } from './publication.entity';
+import { PUBLICATION_NOT_FOUND } from './publication.constant';
 
 @Injectable()
 export class PublicationService {
@@ -49,5 +50,15 @@ export class PublicationService {
     this.publicationRepository.save(publicationEntity);
 
     return publicationEntity;
+  }
+
+  public async getPostDetails(publicationID: string): Promise<PublicationEntity> {
+    const publicationDetails = await this.publicationRepository.findById(publicationID);
+
+    if (!publicationDetails) {
+      throw new NotFoundException(PUBLICATION_NOT_FOUND);
+    }
+
+    return publicationDetails;
   }
 }

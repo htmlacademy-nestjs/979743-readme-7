@@ -10,3 +10,7 @@ Content-Type: application/json
 }
 
 ###
+
+GET http://localhost:3000/api/post/6a7b0f12-a137-468d-a319-442caf9901be HTTP/1.1
+
+###
