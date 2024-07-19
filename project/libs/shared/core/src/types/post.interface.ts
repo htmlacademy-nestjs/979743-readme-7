@@ -8,6 +8,9 @@ export interface Post {
   createDate: Date;
   lastEditDate: Date;
   postStatus: PostStatus;
+  isReposted: boolean;
+  likesCount: number;
+  commentsCount: number;
   tags?: string[];
   link?: string;
   linkDescription?: string;

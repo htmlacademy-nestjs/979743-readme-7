@@ -7,6 +7,9 @@ export class PublicationEntity extends Entity implements StorableEntity<Post> {
   public createDate: Date;
   public lastEditDate: Date;
   public postStatus: PostStatus;
+  public isReposted: boolean;
+  public likesCount: number;
+  public commentsCount: number;
   public tags: string[] | [];
   public link: string | '';
   public linkDescription: string | '';
@@ -35,6 +38,9 @@ export class PublicationEntity extends Entity implements StorableEntity<Post> {
     this.createDate = publication.createDate;
     this.lastEditDate = publication.lastEditDate;
     this.postStatus = publication.postStatus;
+    this.isReposted = this.isReposted ?? false;
+    this.likesCount = this.likesCount ?? 0;
+    this.commentsCount = this.commentsCount ?? 0;
     this.tags = publication.tags ?? [];
     this.link = publication.link ?? '';
     this.linkDescription = publication.linkDescription ?? '';
@@ -56,6 +62,9 @@ export class PublicationEntity extends Entity implements StorableEntity<Post> {
       createDate: this.createDate,
       lastEditDate: this.lastEditDate,
       postStatus: this.postStatus,
+      isReposted: this.isReposted,
+      likesCount: this.likesCount,
+      commentsCount: this.commentsCount,
       tags: this.tags,
       link: this.link,
       linkDescription: this.linkDescription,

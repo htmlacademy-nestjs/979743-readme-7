@@ -22,6 +22,15 @@ export class PublicationRdo {
   public postStatus: PostStatus;
 
   @Expose()
+  public isReposted: boolean;
+
+  @Expose()
+  public likesCount: number;
+
+  @Expose()
+  public commentsCount: number;
+
+  @Expose()
   public tags: string[] | [];
 
   @Expose()
