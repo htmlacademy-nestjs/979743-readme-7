@@ -3,18 +3,34 @@ POST http://localhost:3000/api/post/new HTTP/1.1
 Content-Type: application/json
 
 {
-  "quoteText": "какая-то очень древняя и очень мудрая мысль",
+  "videoTitle": "еще одно очнь крутое видео",
   
- 
+  "tags": ["#vvcvsdcds", "#23fvfdv"],
+  "type": "video"
+}
+
+###
+
+GET http://localhost:3000/api/post/54bb916f-7ff1-4789-8e91-65ee391ac0de HTTP/1.1
+
+###
+
+DELETE http://localhost:3000/api/post/caf84897-2833-4e56-b8be-2f8b65e87011 HTTP/1.1
+
+###
+
+PATCH http://localhost:3000/api/post/10fc3e40-b9e4-4691-8813-515815da5ff4 HTTP/1.1
+Content-Type: application/json
+
+{
+  "quoteText": "второй раз переписанная цитата",
+  "quoteAuthor": "автор все тот же",
   "type": "quote"
 }
 
 ###
 
-GET http://localhost:3000/api/post/1ee0f4f2-59d9-4bb9-90df-a5021a5ab96c HTTP/1.1
 
-###
-
-DELETE http://localhost:3000/api/post/1ee0f4f2-59d9-4bb9-90df-a5021a5ab96c HTTP/1.1
-
-###
+caf84897-2833-4e56-b8be-2f8b65e87011
+4b2b5c27-0433-42e3-89e6-786dc59590b2
+e7576c9a-ccf6-4370-aa22-8fa2025cb832

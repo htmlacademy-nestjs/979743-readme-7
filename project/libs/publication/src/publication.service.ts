@@ -74,4 +74,18 @@ export class PublicationService {
 
     this.publicationRepository.deleteById(publicationID);
   }
+
+  public async editPost(dto: CreatePublicationDto, id: string): Promise<PublicationEntity> {
+    const publication = (await this.publicationRepository.findById(id)).toPOJO();
+    const editedPublication = {
+      ...publication,
+      ...dto,
+      lastEditDate: dayjs().toDate(),
+    };
+
+    const editedPublicationEntity = await new PublicationEntity(editedPublication);
+    this.publicationRepository.update(editedPublicationEntity);
+
+    return editedPublicationEntity;
+  }
 }
