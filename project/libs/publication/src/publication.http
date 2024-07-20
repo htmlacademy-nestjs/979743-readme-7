@@ -4,8 +4,8 @@ Content-Type: application/json
 
 {
   "quoteText": "какая-то очень древняя и очень мудрая мысль",
-  "quoteAuthor": "творчество народное",
-  "tags": ["#dfvdfv", "#fvdfvdfv"],
+  
+ 
   "type": "quote"
 }
 

@@ -22,10 +22,10 @@ export class CreatePublicationDto {
   @ValidateIf((o) => o.videoLink === '')
   public videoLink?: string;
 
-  @ValidateIf((o) => o.quoteText === '')
+  @ValidateIf((o) => o.type !== PostType.Quote)
   public quoteText?: string;
 
-  @ValidateIf((o) => o.quoteAuthor === '')
+  @ValidateIf((o) => o.type !== PostType.Quote)
   public quoteAuthor?: string;
 
   @ValidateIf((o) => o.textTitle === '')
