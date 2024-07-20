@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { PublicationService } from './publication.service';
 import { CreatePublicationDto } from './dto/create-publication.dto';
 
@@ -16,5 +16,10 @@ export class PublicationController {
   public async getDetails(@Param('id') id: string) {
     const publicationDetails = await this.publicationService.getPostDetails(id);
     return publicationDetails.toPOJO();
+  }
+
+  @Delete(':id')
+  public async deletePost(@Param('id') id: string) {
+    await this.publicationService.deletePost(id);
   }
 }

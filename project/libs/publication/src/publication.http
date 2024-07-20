@@ -11,6 +11,10 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/post/b736b8bc-dbc8-4aec-8e0f-09e775559b67 HTTP/1.1
+GET http://localhost:3000/api/post/1ee0f4f2-59d9-4bb9-90df-a5021a5ab96c HTTP/1.1
+
+###
+
+DELETE http://localhost:3000/api/post/1ee0f4f2-59d9-4bb9-90df-a5021a5ab96c HTTP/1.1
 
 ###

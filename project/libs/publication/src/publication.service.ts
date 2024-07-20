@@ -64,4 +64,14 @@ export class PublicationService {
 
     return publicationDetails;
   }
+
+  public async deletePost(publicationID: string) {
+    const publication = await this.publicationRepository.findById(publicationID);
+
+    if (!publication) {
+      throw new NotFoundException(PUBLICATION_NOT_FOUND);
+    }
+
+    this.publicationRepository.deleteById(publicationID);
+  }
 }
