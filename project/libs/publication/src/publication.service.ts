@@ -4,11 +4,15 @@ import { PublicationRepository } from './publication.repository';
 import { CreatePublicationDto } from './dto/create-publication.dto';
 import { PostStatus } from '@project/core';
 import { PublicationEntity } from './publication.entity';
+import { CommentRepository } from '@project/comments';
 import { PUBLICATION_NOT_FOUND } from './publication.constant';
 
 @Injectable()
 export class PublicationService {
-  constructor(private readonly publicationRepository: PublicationRepository) {}
+  constructor(
+    private readonly publicationRepository: PublicationRepository,
+    private readonly commentRepository: CommentRepository
+  ) {}
 
   public async createPost(dto: CreatePublicationDto): Promise<PublicationEntity> {
     const {

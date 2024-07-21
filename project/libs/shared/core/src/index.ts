@@ -7,3 +7,4 @@ export { AuthUser } from './types/auth-user.interface';
 export { Post } from './types/post.interface';
 export { PostStatus } from './types/post-status.enam';
 export { PostType } from './types/post-type.enam';
+export { Comment } from './types/comment.interface';

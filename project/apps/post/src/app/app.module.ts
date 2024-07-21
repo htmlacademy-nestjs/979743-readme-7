@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
-import { PublicationModule } from '@project/publication'
+import { PublicationModule } from '@project/publication';
+import { CommentModule } from '@project/comments';
 
 @Module({
-  imports: [PublicationModule],
+  imports: [PublicationModule, CommentModule],
   controllers: [],
   providers: [],
 })
