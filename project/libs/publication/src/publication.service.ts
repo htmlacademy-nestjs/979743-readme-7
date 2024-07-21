@@ -2,7 +2,7 @@ import dayjs = require('dayjs');
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PublicationRepository } from './publication.repository';
 import { CreatePublicationDto } from './dto/create-publication.dto';
-import { PostStatus } from '@project/core';
+import { Post, PostStatus } from '@project/core';
 import { PublicationEntity } from './publication.entity';
 import { CommentRepository } from '@project/comments';
 import { PUBLICATION_NOT_FOUND } from './publication.constant';
@@ -91,5 +91,10 @@ export class PublicationService {
     this.publicationRepository.update(editedPublicationEntity);
 
     return editedPublicationEntity;
+  }
+
+  public async getAllPosts(): Promise<Post[]> {
+    const postCollection = await this.publicationRepository.getPostCollection();
+    return postCollection;
   }
 }

@@ -11,7 +11,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/post/54bb916f-7ff1-4789-8e91-65ee391ac0de HTTP/1.1
+GET http://localhost:3000/api/post/51a76b43-d9b9-4c94-bbba-d08a078c5c70 HTTP/1.1
 
 ###
 
@@ -30,7 +30,7 @@ Content-Type: application/json
 
 ###
 
+GET http://localhost:3000/api/post HTTP/1.1
 
-caf84897-2833-4e56-b8be-2f8b65e87011
-4b2b5c27-0433-42e3-89e6-786dc59590b2
-e7576c9a-ccf6-4370-aa22-8fa2025cb832
+###
+

@@ -28,4 +28,10 @@ export class PublicationController {
     const editedPost = await this.publicationService.editPost(dto, id);
     return editedPost.toPOJO();
   }
+
+  @Get()
+  public async getPostCollection() {
+    const postCollection = await this.publicationService.getAllPosts();
+    return postCollection;
+  }
 }
