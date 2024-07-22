@@ -1,7 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { CommentsService } from './comment.service';
 import { CommentDto } from './dto/comment.dto';
-import { runInThisContext } from 'vm';
 
 @Controller('comments')
 export class CommentController {
@@ -13,14 +12,20 @@ export class CommentController {
     return newComment.toPOJO();
   }
 
-  @Get(':id')
-  public async getComment(@Param('id') id: string) {
-    const comment = await this.commentService.getComment(id);
-    return comment.toPOJO();
-  }
-
   @Delete(':id')
   public async deleteComment(@Param('id') id: string) {
     await this.commentService.deleteCmment(id);
+  }
+
+  @Get(':postId')
+  public async getCommentsForPost(@Param('postId') postId: string) {
+    const commentsCollection = this.commentService.getCommentsForPost(postId);
+    return commentsCollection;
+  }
+
+  @Get()
+  public async getCommentCollection() {
+    const commentsCollection = this.commentService.getAllComments();
+    return commentsCollection;
   }
 }

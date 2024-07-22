@@ -9,10 +9,7 @@ import { PUBLICATION_NOT_FOUND } from './publication.constant';
 
 @Injectable()
 export class PublicationService {
-  constructor(
-    private readonly publicationRepository: PublicationRepository,
-    private readonly commentRepository: CommentRepository
-  ) {}
+  constructor(private readonly publicationRepository: PublicationRepository) {}
 
   public async createPost(dto: CreatePublicationDto): Promise<PublicationEntity> {
     const {

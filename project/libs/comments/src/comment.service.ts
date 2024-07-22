@@ -4,6 +4,8 @@ import { CommentRepository } from './comment.repository';
 import { CommentDto } from './dto/comment.dto';
 import { CommentEntity } from './comment.entity';
 import { COMMENT_NOT_FOUND } from './comment.constant';
+import { Comment } from '@project/core';
+import { all } from 'axios';
 
 @Injectable()
 export class CommentsService {
@@ -37,5 +39,16 @@ export class CommentsService {
     }
 
     this.commentRepository.deleteById(commentId);
+  }
+
+  public async getCommentsForPost(postId: string): Promise<Comment[]> {
+    const commentCollection = await this.commentRepository.getCommentCollection();
+    const filteredCollection = commentCollection.filter((comment) => comment.publicationId === postId);
+    return filteredCollection;
+  }
+
+  public async getAllComments(): Promise<Comment[]> {
+    const allComments = await this.commentRepository.getCommentCollection();
+    return allComments;
   }
 }

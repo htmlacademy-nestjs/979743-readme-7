@@ -12,7 +12,7 @@ export class PublicationRepository extends BaseMemoryRepository<PublicationEntit
 
   public getPostCollection(): Post[] {
     const collection = [];
-    this.entities.forEach((value, key, map) => {
+    this.entities.forEach((value, key) => {
       collection.push({
         ...value,
         key,

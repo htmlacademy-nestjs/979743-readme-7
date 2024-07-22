@@ -3,16 +3,20 @@ POST http://localhost:3000/api/comments/new HTTP/1.1
 Content-Type: application/json
 
 {
-  "publicationId": "dfvdfvd-dfvdfv-gh221321",
-  "commentText": "dsvdv grtgeadsf rgtrgdf "
+  "publicationId": "19b4f9de-22ef-4611-8b0f-2acf85715c15",
+  "commentText": "авдли жщдлпждкплукщпа "
 }
 
 ###
 
-GET http://localhost:3000/api/comments/cb471350-442b-4f81-a28a-92ba389a4d3a HTTP/1.1
+GET http://localhost:3000/api/comments/19b4f9de-22ef-4611-8b0f-2acf85715c15 HTTP/1.1
 
 ###
 
-DELETE http://localhost:3000/api/comments/41f34467-ab79-48c0-bd7b-fb0fdb7fb2cf HTTP/1.1
+DELETE http://localhost:3000/api/comments/2c33bebf-f92e-4761-8280-ce25a2e27744 HTTP/1.1
+
+###
+
+GET http://localhost:3000/api/comments/ HTTP/1.1
 
 ###
