@@ -1,11 +1,11 @@
 /* eslint-disable */
 export default {
-  displayName: 'posts-list',
-  preset: '../../../jest.preset.js',
+  displayName: 'post-list',
+  preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../coverage/libs/blog/posts-list',
+  coverageDirectory: '../../coverage/libs/post-list',
 };

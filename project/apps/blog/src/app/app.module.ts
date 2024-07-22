@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
-import { PostsListModule } from '@project/posts-list';
+import { PostlistModule } from '@project/post-list';
+import { PublicationModule } from '@project/publication';
 
 @Module({
-  imports: [PostsListModule],
+  imports: [PostlistModule, PublicationModule],
   controllers: [],
   providers: [],
 })
