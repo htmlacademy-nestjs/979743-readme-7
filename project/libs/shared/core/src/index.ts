@@ -8,3 +8,4 @@ export { Post } from './types/post.interface';
 export { PostStatus } from './types/post-status.enam';
 export { PostType } from './types/post-type.enam';
 export { Comment } from './types/comment.interface';
+export { LikesCountChange } from './types/likes-count-change.enum';

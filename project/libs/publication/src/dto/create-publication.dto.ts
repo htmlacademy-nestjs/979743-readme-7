@@ -1,4 +1,4 @@
-import { IsOptional, ValidateIf } from 'class-validator';
+import { IsOptional, ValidateIf, IsNotEmpty, IsString } from 'class-validator';
 import { PostType } from 'libs/shared/core/src/types/post-type.enam';
 
 export class CreatePublicationDto {
@@ -14,6 +14,8 @@ export class CreatePublicationDto {
   public linkDescription: string;
 
   @ValidateIf((o) => o.photo === PostType.Photo)
+  @IsString()
+  @IsNotEmpty()
   public photo: string;
 
   @ValidateIf((o) => o.videoTitle === PostType.Video)

@@ -3,10 +3,8 @@ POST http://localhost:3000/api/post/new HTTP/1.1
 Content-Type: application/json
 
 {
-  "videoTitle": "очень очень крутое видео",
-  
-  "tags": ["#vvcvsdcds", "#23fvfdv"],
-  "type": "video"
+  "photo": 8,  
+  "type": "photo"
 }
 
 ###
@@ -19,7 +17,7 @@ DELETE http://localhost:3000/api/post/caf84897-2833-4e56-b8be-2f8b65e87011 HTTP/
 
 ###
 
-PATCH http://localhost:3000/api/post/10fc3e40-b9e4-4691-8813-515815da5ff4 HTTP/1.1
+PATCH http://localhost:3000/api/post/0b35d5ab-2fd6-45f1-bbf2-810f5b9e8541 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -34,5 +32,10 @@ GET http://localhost:3000/api/post HTTP/1.1
 
 ###
 
-c4549b8a-1390-412a-a32c-d5db4b48bc91
-edbe65ef-dbfb-49ed-9206-98cfad2e4bfd
+
+PATCH http://localhost:3000/api/post/3d372824-533e-4f3d-9d26-0c2456faf47f/change-likes HTTP/1.1
+Content-Type: application/json
+
+{
+  "likesCountChange": -1
+}

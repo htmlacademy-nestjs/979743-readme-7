@@ -5,6 +5,7 @@ import { CreatePublicationDto } from './dto/create-publication.dto';
 import { Post, PostStatus } from '@project/core';
 import { PublicationEntity } from './publication.entity';
 import { PUBLICATION_NOT_FOUND } from './publication.constant';
+import { ChangeLikesCountDto } from './dto/change-likes-count.dto';
 
 @Injectable()
 export class PublicationService {
@@ -83,14 +84,27 @@ export class PublicationService {
       lastEditDate: dayjs().toDate(),
     };
 
-    const editedPublicationEntity = await new PublicationEntity(editedPublication);
+    const editedPublicationEntity = new PublicationEntity(editedPublication);
     this.publicationRepository.update(editedPublicationEntity);
 
     return editedPublicationEntity;
   }
 
   public async getAllPosts(): Promise<Post[]> {
-    const postCollection = await this.publicationRepository.getPostCollection();
+    const postCollection = this.publicationRepository.getPostCollection();
     return postCollection;
+  }
+
+  public async changeLikesCount(dto: ChangeLikesCountDto, id: string): Promise<PublicationEntity> {
+    const publication = (await this.publicationRepository.findById(id)).toPOJO();
+    const editedPublication = {
+      ...publication,
+      likesCount: publication.likesCount + dto.likesCountChange,
+    };
+
+    const editedPublicationEntity = new PublicationEntity(editedPublication);
+    this.publicationRepository.update(editedPublicationEntity);
+
+    return editedPublicationEntity;
   }
 }

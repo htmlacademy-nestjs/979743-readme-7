@@ -31,35 +31,35 @@ export class PublicationRdo {
   public commentsCount: number;
 
   @Expose()
-  public tags: string[] | [];
+  public tags: string[];
 
   @Expose()
-  public link: string | '';
+  public link: string;
 
   @Expose()
-  public linkDescription: string | '';
+  public linkDescription: string;
 
   @Expose()
-  public photo: string | '';
+  public photo: string;
 
   @Expose()
-  public videoTitle: string | '';
+  public videoTitle: string;
 
   @Expose()
-  public videoLink: string | '';
+  public videoLink: string;
 
   @Expose()
-  public quoteText: string | '';
+  public quoteText: string;
 
   @Expose()
-  public quoteAuthor: string | '';
+  public quoteAuthor: string;
 
   @Expose()
-  public textTitle: string | '';
+  public textTitle: string;
 
   @Expose()
-  public textNotice: string | '';
+  public textNotice: string;
 
   @Expose()
-  public textContent: string | '';
+  public textContent: string;
 }
