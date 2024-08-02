@@ -1,0 +1,28 @@
+
+POST http://localhost:3000/api/comments/new HTTP/1.1
+Content-Type: application/json
+
+{
+  "publicationId": "2403df19-934b-42e3-92d0-318163db5128",
+  "commentText": "hihl urts fghyuk"
+}
+
+###
+
+GET http://localhost:3000/api/comments/36ad2f50-b39d-4228-9685-e88cc02880a3 HTTP/1.1
+
+###
+
+DELETE http://localhost:3000/api/comments/77fab903-e793-43e9-a909-344e2b6dfe45 HTTP/1.1
+Content-Type: application/json
+
+{
+  "publicationId": "12aff2df-44eb-46c5-931c-3e6c2fcc607c",
+  "commentText": "hihl urts fghyuk"
+}
+
+###
+
+GET http://localhost:3000/api/comments/ HTTP/1.1
+
+###

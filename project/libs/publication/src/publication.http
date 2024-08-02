@@ -1,0 +1,45 @@
+
+POST http://localhost:3000/api/post/new HTTP/1.1
+Content-Type: application/json
+
+{
+  "photo": "fjnbjknv gffndlknkl",  
+  "type": "photo"
+}
+
+###
+
+GET http://localhost:3000/api/post/2403df19-934b-42e3-92d0-318163db5128 HTTP/1.1
+
+###
+
+DELETE http://localhost:3000/api/post/caf84897-2833-4e56-b8be-2f8b65e87011 HTTP/1.1
+
+###
+
+PATCH http://localhost:3000/api/post/36ad2f50-b39d-4228-9685-e88cc02880a3 HTTP/1.1
+Content-Type: application/json
+
+{
+  "quoteText": "второй раз переписанная цитата",
+  "quoteAuthor": "автор все тот же",
+  "type": "quote"
+}
+
+###
+
+GET http://localhost:3000/api/post HTTP/1.1
+
+###
+
+
+PATCH http://localhost:3000/api/post/3c741867-25e2-4046-94c9-8393b9baffa5/change-likes HTTP/1.1
+Content-Type: application/json
+
+{
+  "countChange": -1
+}
+
+###
+
+2403df19-934b-42e3-92d0-318163db5128
