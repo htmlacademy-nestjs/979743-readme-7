@@ -12,9 +12,9 @@ export class CommentController {
     return newComment.toPOJO();
   }
 
-  @Delete(':id')
-  public async deleteComment(@Param('id') id: string) {
-    await this.commentService.deleteCmment(id);
+  @Delete(':commentId')
+  public async deleteComment(@Param('commentId') id: string) {
+    await this.commentService.deleteComment(id);
   }
 
   @Get(':postId')

@@ -5,7 +5,7 @@ import { CreatePublicationDto } from './dto/create-publication.dto';
 import { Post, PostStatus } from '@project/core';
 import { PublicationEntity } from './publication.entity';
 import { PUBLICATION_NOT_FOUND } from './publication.constant';
-import { ChangeLikesCountDto } from './dto/change-likes-count.dto';
+import { ChangeCountDto } from './dto/change-count.dto';
 
 @Injectable()
 export class PublicationService {
@@ -95,11 +95,24 @@ export class PublicationService {
     return postCollection;
   }
 
-  public async changeLikesCount(dto: ChangeLikesCountDto, id: string): Promise<PublicationEntity> {
+  public async changeLikesCount(dto: ChangeCountDto, id: string): Promise<PublicationEntity> {
     const publication = (await this.publicationRepository.findById(id)).toPOJO();
     const editedPublication = {
       ...publication,
-      likesCount: publication.likesCount + dto.likesCountChange,
+      likesCount: publication.likesCount + dto.countChange,
+    };
+
+    const editedPublicationEntity = new PublicationEntity(editedPublication);
+    this.publicationRepository.update(editedPublicationEntity);
+
+    return editedPublicationEntity;
+  }
+
+  public async changeCommentsCount(dto: ChangeCountDto, id: string): Promise<PublicationEntity> {
+    const publication = (await this.publicationRepository.findById(id)).toPOJO();
+    const editedPublication = {
+      ...publication,
+      commentsCount: publication.commentsCount + dto.countChange,
     };
 
     const editedPublicationEntity = new PublicationEntity(editedPublication);

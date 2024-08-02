@@ -3,13 +3,13 @@ POST http://localhost:3000/api/post/new HTTP/1.1
 Content-Type: application/json
 
 {
-  "photo": 8,  
+  "photo": "fjnbjknv gffndlknkl",  
   "type": "photo"
 }
 
 ###
 
-GET http://localhost:3000/api/post/51a76b43-d9b9-4c94-bbba-d08a078c5c70 HTTP/1.1
+GET http://localhost:3000/api/post/2403df19-934b-42e3-92d0-318163db5128 HTTP/1.1
 
 ###
 
@@ -17,7 +17,7 @@ DELETE http://localhost:3000/api/post/caf84897-2833-4e56-b8be-2f8b65e87011 HTTP/
 
 ###
 
-PATCH http://localhost:3000/api/post/0b35d5ab-2fd6-45f1-bbf2-810f5b9e8541 HTTP/1.1
+PATCH http://localhost:3000/api/post/36ad2f50-b39d-4228-9685-e88cc02880a3 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -33,9 +33,13 @@ GET http://localhost:3000/api/post HTTP/1.1
 ###
 
 
-PATCH http://localhost:3000/api/post/3d372824-533e-4f3d-9d26-0c2456faf47f/change-likes HTTP/1.1
+PATCH http://localhost:3000/api/post/3c741867-25e2-4046-94c9-8393b9baffa5/change-likes HTTP/1.1
 Content-Type: application/json
 
 {
-  "likesCountChange": -1
+  "countChange": -1
 }
+
+###
+
+2403df19-934b-42e3-92d0-318163db5128

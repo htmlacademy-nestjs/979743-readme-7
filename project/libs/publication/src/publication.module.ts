@@ -6,9 +6,9 @@ import { PublicationService } from './publication.service';
 import { CommentModule } from '@project/comments';
 
 @Module({
-  imports: [CommentModule],
+  imports: [],
   controllers: [PublicationController],
   providers: [PublicationService, PublicationRepository, PublicationFactory],
-  exports: [PublicationRepository],
+  exports: [PublicationRepository, PublicationService],
 })
 export class PublicationModule {}

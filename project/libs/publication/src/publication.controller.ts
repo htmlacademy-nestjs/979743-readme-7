@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { PublicationService } from './publication.service';
 import { CreatePublicationDto } from './dto/create-publication.dto';
-import { ChangeLikesCountDto } from './dto/change-likes-count.dto';
+import { ChangeCountDto } from './dto/change-count.dto';
 
 @Controller('post')
 export class PublicationController {
@@ -37,7 +37,7 @@ export class PublicationController {
   }
 
   @Patch(':id/change-likes')
-  public async changeLikesCount(@Param('id') id: string, @Body() dto: ChangeLikesCountDto) {
+  public async changeLikesCount(@Param('id') id: string, @Body() dto: ChangeCountDto) {
     const editedPost = await this.publicationService.changeLikesCount(dto, id);
     return editedPost.toPOJO();
   }
