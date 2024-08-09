@@ -2,9 +2,9 @@ import dayjs = require('dayjs');
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PublicationRepository } from './publication.repository';
 import { CreatePublicationDto } from './dto/create-publication.dto';
-import { Post, PostStatus } from '@project/core';
+import { PostStatus } from '@project/core';
 import { PublicationEntity } from './publication.entity';
-import { PUBLICATION_NOT_FOUND } from './publication.constant';
+import { PublicationResponseMessage } from './publication.constant';
 import { ChangeCountDto } from './dto/change-count.dto';
 
 @Injectable()
@@ -60,7 +60,7 @@ export class PublicationService {
     const publicationDetails = await this.publicationRepository.findById(publicationID);
 
     if (!publicationDetails) {
-      throw new NotFoundException(PUBLICATION_NOT_FOUND);
+      throw new NotFoundException(PublicationResponseMessage.PublicationNotFound);
     }
 
     return publicationDetails;
@@ -70,7 +70,7 @@ export class PublicationService {
     const publication = await this.publicationRepository.findById(publicationID);
 
     if (!publication) {
-      throw new NotFoundException(PUBLICATION_NOT_FOUND);
+      throw new NotFoundException(PublicationResponseMessage.PublicationNotFound);
     }
 
     this.publicationRepository.deleteById(publicationID);
@@ -88,11 +88,6 @@ export class PublicationService {
     this.publicationRepository.update(editedPublicationEntity);
 
     return editedPublicationEntity;
-  }
-
-  public async getAllPosts(): Promise<Post[]> {
-    const postCollection = this.publicationRepository.getPostCollection();
-    return postCollection;
   }
 
   public async changeLikesCount(dto: ChangeCountDto, id: string): Promise<PublicationEntity> {
