@@ -24,7 +24,8 @@
       "@project/post-list": ["libs/post-list/src/index.ts"],
       "@project/post-module": ["libs/post/post-module/src/index.ts"],
       "@project/posts-list": ["libs/blog/posts-list/src/index.ts"],
-      "@project/publication": ["libs/publication/src/index.ts"]
+      "@project/publication": ["libs/publication/src/index.ts"],
+      "@project/user-config": ["libs/user/config/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
