@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs  https //pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate  https //pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id              String   @id @default(uuid())
+  type            String
+  author          String
+  createDate      DateTime @default(now()) @map("create_date")
+  lastEditDate    DateTime @updatedAt @map("lastEdit_date")
+  postStatus      String   @map("post_status")
+  isReposted      Boolean  @map("is_reposted")
+  likesCount      Int      @map("likes_count")
+  commentsCount   Int      @map("comments_count")
+  tags            String
+  link            String
+  linkDescription String   @map("link_description")
+  photo           String
+  videoTitle      String   @map("video_title")
+  videoLink       String   @map("video_link")
+  quoteText       String   @map("quote_text")
+  quoteAuthor     String   @map("quote_author")
+  textTitle       String   @map("text_title")
+  textNotice      String   @map("text_notice")
+  textContent     String   @map("text_content")
+
+  @@index([id, author, createDate])
+  @@map("posts")
+}
