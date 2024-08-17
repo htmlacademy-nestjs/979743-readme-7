@@ -24,17 +24,17 @@ model Post {
   isReposted      Boolean   @map("is_reposted")
   likesCount      Int       @map("likes_count")
   commentsCount   Int       @map("comments_count")
-  tags            String
-  link            String
-  linkDescription String    @map("link_description")
-  photo           String
-  videoTitle      String    @map("video_title")
-  videoLink       String    @map("video_link")
-  quoteText       String    @map("quote_text")
-  quoteAuthor     String    @map("quote_author")
-  textTitle       String    @map("text_title")
-  textNotice      String    @map("text_notice")
-  textContent     String    @map("text_content")
+  tags            String?
+  link            String?
+  linkDescription String?   @map("link_description")
+  photo           String?
+  videoTitle      String?   @map("video_title")
+  videoLink       String?   @map("video_link")
+  quoteText       String?   @map("quote_text")
+  quoteAuthor     String?   @map("quote_author")
+  textTitle       String?   @map("text_title")
+  textNotice      String?   @map("text_notice")
+  textContent     String?   @map("text_content")
   comments        Comment[]
 
   @@index([id])

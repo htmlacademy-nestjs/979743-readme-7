@@ -45,8 +45,8 @@ function getPosts() {
       link: '',
       linkDescription: '',
       photo: 'Очень редкая фотка',
-      videoTitle: 'Мега крутой видос',
-      videoLink: 'где-то на youtub',
+      videoTitle: '',
+      videoLink: '',
       quoteText: '',
       quoteAuthor: '',
       textTitle: '',
@@ -75,7 +75,7 @@ async function seedDb(prismaClient: PrismaClient) {
   for (const post of mockPosts) {
     await prismaClient.post.create({
       data: {
-        id: post.id,
+        // id: post.id,
         type: post.type,
         author: post.author,
         // createDate: post.createDate,
