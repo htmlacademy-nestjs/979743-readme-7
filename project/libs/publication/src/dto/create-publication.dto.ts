@@ -10,7 +10,7 @@ export class CreatePublicationDto {
     example: '#news, #lifestyle',
   })
   @IsOptional()
-  public tags: string[];
+  public tags: string;
 
   @ApiProperty({
     description: 'Link to original source',

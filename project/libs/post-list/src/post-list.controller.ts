@@ -9,17 +9,17 @@ import { PostlistResponseMessage } from './post-list.constant';
 export class PostlistController {
   constructor(private readonly postlistService: PostlistService) {}
 
-  @ApiResponse({
-    status: HttpStatus.OK,
-    description: PostlistResponseMessage.PostlistLoaded,
-  })
-  @ApiResponse({
-    status: HttpStatus.NOT_FOUND,
-    description: PostlistResponseMessage.PostlistEmpty,
-  })
-  @Get()
-  public async getAllPosts(): Promise<Post[]> {
-    const allPosts = await this.postlistService.getAllPosts();
-    return allPosts;
-  }
+  // @ApiResponse({
+  //   status: HttpStatus.OK,
+  //   description: PostlistResponseMessage.PostlistLoaded,
+  // })
+  // @ApiResponse({
+  //   status: HttpStatus.NOT_FOUND,
+  //   description: PostlistResponseMessage.PostlistEmpty,
+  // })
+  // @Get()
+  // public async getAllPosts(): Promise<Post[]> {
+  //   const allPosts = await this.postlistService.getAllPosts();
+  //   return allPosts;
+  // }
 }

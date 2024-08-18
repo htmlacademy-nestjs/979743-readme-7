@@ -11,7 +11,7 @@ export interface Post {
   isReposted: boolean;
   likesCount: number;
   commentsCount: number;
-  tags?: string[];
+  tags?: string;
   link?: string;
   linkDescription?: string;
   photo?: string;
@@ -22,4 +22,5 @@ export interface Post {
   textTitle?: string;
   textNotice?: string;
   textContent?: string;
+  // comment: Comment[];
 }

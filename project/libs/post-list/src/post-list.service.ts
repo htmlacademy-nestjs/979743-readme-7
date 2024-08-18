@@ -6,8 +6,8 @@ import { PublicationRepository } from '@project/publication';
 export class PostlistService {
   constructor(private readonly publicationRepository: PublicationRepository) {}
 
-  public async getAllPosts(): Promise<Post[]> {
-    const postCollection = await this.publicationRepository.getPostCollection();
-    return postCollection;
-  }
+  // public async getAllPosts(): Promise<Post[]> {
+  //   const postCollection = await this.publicationRepository.getPostCollection();
+  //   return postCollection;
+  // }
 }

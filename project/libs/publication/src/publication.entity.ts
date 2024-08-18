@@ -10,7 +10,7 @@ export class PublicationEntity extends Entity implements StorableEntity<Post> {
   public isReposted: boolean;
   public likesCount: number;
   public commentsCount: number;
-  public tags: string[];
+  public tags?: string | null;
   public link: string;
   public linkDescription: string;
   public photo: string;
@@ -41,7 +41,7 @@ export class PublicationEntity extends Entity implements StorableEntity<Post> {
     this.isReposted = publication.isReposted;
     this.likesCount = publication.likesCount;
     this.commentsCount = publication.commentsCount;
-    this.tags = publication.tags;
+    this.tags = publication.tags ?? null;
     this.link = publication.link;
     this.linkDescription = publication.linkDescription;
     this.photo = publication.photo;
