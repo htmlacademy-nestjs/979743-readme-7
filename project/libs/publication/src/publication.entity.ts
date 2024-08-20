@@ -2,7 +2,8 @@ import { Entity, StorableEntity, Post, PostStatus } from '@project/core';
 import { PostType } from 'libs/shared/core/src/types/post-type.enam';
 
 export class PublicationEntity extends Entity implements StorableEntity<Post> {
-  public type: PostType;
+  // public type: PostType;
+  public type: string;
   public author: string;
   public createDate: Date;
   public lastEditDate: Date;
