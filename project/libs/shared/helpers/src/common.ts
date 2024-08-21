@@ -1,5 +1,4 @@
 import { ClassTransformOptions, plainToInstance } from 'class-transformer';
-import { Post, PostType } from '@project/core';
 
 type PlainObject = Record<string, unknown>;
 
@@ -24,4 +23,8 @@ export function fillDto<T, V extends PlainObject>(
     excludeExtraneousValues: true,
     ...options,
   });
+}
+
+export function getMongoConnectionString({ username, password, host, port, databaseName, authDatabase }): string {
+  return `mongodb://${username}:${password}@${host}:${port}/${databaseName}?authSource=${authDatabase}`;
 }
