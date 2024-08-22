@@ -7,4 +7,4 @@ export const PublicationResponseMessage = {
   PublicationDataError: 'The data is incorrect.',
 } as const;
 
-export const MAX_POST_LIMIT = 20;
+export const MAX_POST_LIMIT = 25;

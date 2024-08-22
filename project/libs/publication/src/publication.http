@@ -3,16 +3,8 @@ POST http://localhost:3000/api/post/new HTTP/1.1
 Content-Type: application/json
 
 {
-  "videoLink": "afaerfer erfaerf",  
-  "type": "video",
-  "tags": "dfvdlfv ;dlf;dl",
-  "link": "dfvdlfv ;dlf;dl",
-  "linkDescription": "dfvdlfv ;dlf;dl",
-  "photo": "dfvdlfv ;dlf;dl",
-  "videoTitle": "dfvdlfv ;dlf;dl",
-  "videoLink": "dfvdlfv ;dlf;dl",
-  "quoteText": "dfvdlfv ;dlf;dl",
-  "quoteAuthor": "dfvdlfv ;dlf;dl",
+  "type": "text",
+  "tags": "#gnhjkl, #fgbk, #546098",
   "textTitle": "dfvdlfv ;dlf;dl",
   "textNotice": "dfvdlfv ;dlf;dl",
   "textContent": "dfvdlfv ;dlf;dl"
@@ -20,21 +12,30 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/post/2403df19-934b-42e3-92d0-318163db5128 HTTP/1.1
+
+POST http://localhost:3000/api/post/new HTTP/1.1
+Content-Type: application/json
+
+{ 
+  "type": "photo",
+  "tags": "#dfvdlfv #dlfdl"
+}
 
 ###
 
-DELETE http://localhost:3000/api/post/caf84897-2833-4e56-b8be-2f8b65e87011 HTTP/1.1
+GET http://localhost:3000/api/post/7e4ed12b-8b18-452c-979a-7bcd94b5575b HTTP/1.1
 
 ###
 
-PATCH http://localhost:3000/api/post/36ad2f50-b39d-4228-9685-e88cc02880a3 HTTP/1.1
+DELETE http://localhost:3000/api/post/d04f34db-cd27-4dab-b2b3-dd9c4f1edb00 HTTP/1.1
+
+###
+
+PATCH http://localhost:3000/api/post/0bedc936-814a-4d79-9fc8-797cff71c970 HTTP/1.1
 Content-Type: application/json
 
 {
-  "quoteText": "второй раз переписанная цитата",
-  "quoteAuthor": "автор все тот же",
-  "type": "quote"
+  "isReposted": true
 }
 
 ###
@@ -44,12 +45,12 @@ GET http://localhost:3000/api/post HTTP/1.1
 ###
 
 
-PATCH http://localhost:3000/api/post/3c741867-25e2-4046-94c9-8393b9baffa5/change-likes HTTP/1.1
+PATCH http://localhost:3000/api/post/0bedc936-814a-4d79-9fc8-797cff71c970/change-likes HTTP/1.1
 Content-Type: application/json
 
 {
-  "countChange": -1
-}
+  "countChange": 1
+}  
 
 ###
 

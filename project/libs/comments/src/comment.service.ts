@@ -5,26 +5,21 @@ import { CommentDto } from './dto/comment.dto';
 import { CommentEntity } from './comment.entity';
 import { COMMENT_NOT_FOUND } from './comment.constant';
 import { Comment } from '@project/core';
-import { PublicationService } from '@project/publication';
-import { CountChange } from '@project/core';
 
 @Injectable()
 export class CommentsService {
-  constructor(
-    private readonly commentRepository: CommentRepository,
-    private readonly publicationService: PublicationService
-  ) {}
+  constructor(private readonly commentRepository: CommentRepository) {}
   public async createComment(dto: CommentDto): Promise<CommentEntity> {
     const comment = {
       ...dto,
       createCommentDate: dayjs().toDate(),
-      commentAuthor: '',
+      commentAuthorId: '',
     };
 
     const commentEntity = new CommentEntity(comment);
     this.commentRepository.save(commentEntity);
 
-    this.publicationService.changeCommentsCount({ countChange: CountChange.Increase }, dto.publicationId);
+    // this.publicationService.changeCommentsCount({ countChange: CountChange.Increase }, dto.publicationId);
 
     return commentEntity;
   }
@@ -46,7 +41,7 @@ export class CommentsService {
 
     this.commentRepository.deleteById(commentId);
 
-    this.publicationService.changeCommentsCount({ countChange: CountChange.Decrease }, comment.publicationId);
+    // this.publicationService.changeCommentsCount({ countChange: CountChange.Decrease }, comment.publicationId);
   }
 
   public async getCommentsForPost(postId: string): Promise<Comment[]> {

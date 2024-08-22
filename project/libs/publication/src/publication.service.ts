@@ -12,47 +12,22 @@ export class PublicationService {
   constructor(private readonly publicationRepository: PublicationRepository) {}
 
   public async createPost(dto: CreatePublicationDto): Promise<PublicationEntity> {
-    const {
-      type,
-      tags,
-      link,
-      linkDescription,
-      photo,
-      videoTitle,
-      videoLink,
-      quoteText,
-      quoteAuthor,
-      textTitle,
-      textNotice,
-      textContent,
-    } = dto;
-
     const post = {
-      type,
-      author: '',
+      ...dto,
+      authorID: '',
       createDate: dayjs().toDate(),
       lastEditDate: dayjs().toDate(),
       postStatus: PostStatus.Published,
       isReposted: false,
       likesCount: 0,
       commentsCount: 0,
-      tags,
-      link,
-      linkDescription,
-      photo,
-      videoTitle,
-      videoLink,
-      quoteText,
-      quoteAuthor,
-      textTitle,
-      textNotice,
-      textContent,
+      comments: [],
     };
 
-    const publicationEntity = await new PublicationEntity(post);
+    const publicationEntity = new PublicationEntity(post);
 
     this.publicationRepository.save(publicationEntity);
-
+    // console.log(publicationEntity.id);
     return publicationEntity;
   }
 

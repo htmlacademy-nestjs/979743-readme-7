@@ -1,10 +1,13 @@
 import { PostStatus } from './post-status.enam';
 import { PostType } from './post-type.enam';
+import { Comment } from './comment.interface';
 
 export interface Post {
   id?: string;
+  originalID?: string;
   type: PostType;
-  author: string;
+  authorID: string;
+  originalAuthorID?: string;
   createDate: Date;
   lastEditDate: Date;
   postStatus: PostStatus;
@@ -22,5 +25,5 @@ export interface Post {
   textTitle?: string;
   textNotice?: string;
   textContent?: string;
-  // comment: Comment[];
+  comments: Comment[];
 }

@@ -15,11 +15,18 @@ export class PublicationRepository extends BasePostgresRepository<PublicationEnt
   }
 
   public async save(entity: PublicationEntity): Promise<void> {
+    const pojoEntity = entity.toPOJO();
     const record = await this.client.post.create({
-      data: { ...entity.toPOJO() },
+      data: {
+        ...pojoEntity,
+        comments: {
+          connect: [],
+        },
+      },
     });
 
     entity.id = record.id;
+    // return record.id;
   }
 
   public async findById(id: string): Promise<PublicationEntity> {
@@ -27,13 +34,16 @@ export class PublicationRepository extends BasePostgresRepository<PublicationEnt
       where: {
         id,
       },
+      include: {
+        comments: true,
+      },
     });
 
     if (!document) {
-      throw new NotFoundException(`Category with id ${id} not found.`);
+      throw new NotFoundException(`Publication with id ${id} not found.`);
     }
 
-    return this.createEntityFromDocument(document);
+    return this.createEntityFromDocument(document as Post);
   }
 
   public async deleteById(id: string): Promise<void> {
@@ -45,10 +55,17 @@ export class PublicationRepository extends BasePostgresRepository<PublicationEnt
   }
 
   public async update(entity: PublicationEntity): Promise<void> {
+    const pojoEntity = entity.toPOJO();
     await this.client.post.update({
       where: { id: entity.id },
       data: {
-        type: entity.type,
+        ...pojoEntity,
+        comments: {
+          set: pojoEntity.comments.map((comment) => ({ id: comment.id })),
+        },
+      },
+      include: {
+        comments: true,
       },
     });
   }
@@ -61,7 +78,7 @@ export class PublicationRepository extends BasePostgresRepository<PublicationEnt
       take: MAX_POST_LIMIT,
     });
 
-    return documents.map((document) => this.createEntityFromDocument(document));
+    return documents.map((document) => this.createEntityFromDocument(document as Post));
   }
 
   public async findByIds(ids: string[]): Promise<PublicationEntity[]> {
@@ -73,7 +90,7 @@ export class PublicationRepository extends BasePostgresRepository<PublicationEnt
       },
     });
 
-    return records.map((record) => this.createEntityFromDocument(record));
+    return records.map((record) => this.createEntityFromDocument(record as Post));
   }
 
   // public getPostCollection(): Post[] {
