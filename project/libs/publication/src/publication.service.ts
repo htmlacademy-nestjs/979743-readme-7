@@ -6,6 +6,7 @@ import { PostStatus } from '@project/core';
 import { PublicationEntity } from './publication.entity';
 import { PublicationResponseMessage } from './publication.constant';
 import { ChangeCountDto } from './dto/change-count.dto';
+import { UpdatePublicationDto } from './dto/update-publication.dto';
 
 @Injectable()
 export class PublicationService {
@@ -51,7 +52,7 @@ export class PublicationService {
     this.publicationRepository.deleteById(publicationID);
   }
 
-  public async editPost(dto: CreatePublicationDto, id: string): Promise<PublicationEntity> {
+  public async editPost(dto: UpdatePublicationDto, id: string): Promise<PublicationEntity> {
     const publication = (await this.publicationRepository.findById(id)).toPOJO();
     const editedPublication = {
       ...publication,

@@ -37,6 +37,7 @@ export class PublicationEntity extends Entity implements StorableEntity<Post> {
     }
 
     this.id = publication.id;
+    this.originalID = publication.originalID;
     this.type = publication.type;
     this.authorID = publication.authorID;
     this.originalAuthorID = publication.originalAuthorID;
@@ -69,6 +70,7 @@ export class PublicationEntity extends Entity implements StorableEntity<Post> {
   public toPOJO(): Post {
     return {
       id: this.id,
+      originalID: this.originalID,
       type: this.type,
       authorID: this.authorID,
       originalAuthorID: this.originalAuthorID,
