@@ -2,7 +2,23 @@ import { IsOptional, ValidateIf, IsNotEmpty, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { PostType } from 'libs/shared/core/src/types/post-type.enam';
 
-export class CreatePublicationDto {
+export class UpdatePublicationDto {
+  @ApiProperty({
+    description: 'ID of original publication for repost',
+    example: 'c493b91d-d1aa-4bb0-b133-ea5830044510',
+  })
+  public originalID?: string;
+
+  @ApiProperty({
+    description: 'ID of original publication author for repost',
+    example: 'c493b91d-d1aa-4bb0-b133-ea5830044510',
+  })
+  public originalAuthorID?: string;
+
+  @ApiProperty({
+    description: 'Publication type',
+    example: 'photo',
+  })
   public type: PostType;
 
   @ApiProperty({

@@ -6,7 +6,7 @@ import { CommentController } from './comment.controller';
 import { PublicationModule } from '@project/publication';
 
 @Module({
-  imports: [PublicationModule],
+  imports: [],
   controllers: [CommentController],
   providers: [CommentRepository, CommentFactory, CommentsService],
   exports: [CommentRepository],

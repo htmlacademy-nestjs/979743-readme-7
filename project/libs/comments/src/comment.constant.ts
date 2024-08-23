@@ -10,3 +10,5 @@ export const CommentResponseMessage = {
   CommentCollectionLoaded: 'Comments collection loaded',
   CommentCollectionEmpty: 'Comment collection is empty',
 } as const;
+
+export const MAX_COMMMENT_LIMIT = 50;

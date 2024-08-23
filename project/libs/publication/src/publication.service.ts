@@ -6,53 +6,29 @@ import { PostStatus } from '@project/core';
 import { PublicationEntity } from './publication.entity';
 import { PublicationResponseMessage } from './publication.constant';
 import { ChangeCountDto } from './dto/change-count.dto';
+import { UpdatePublicationDto } from './dto/update-publication.dto';
 
 @Injectable()
 export class PublicationService {
   constructor(private readonly publicationRepository: PublicationRepository) {}
 
   public async createPost(dto: CreatePublicationDto): Promise<PublicationEntity> {
-    const {
-      type,
-      tags,
-      link,
-      linkDescription,
-      photo,
-      videoTitle,
-      videoLink,
-      quoteText,
-      quoteAuthor,
-      textTitle,
-      textNotice,
-      textContent,
-    } = dto;
-
     const post = {
-      type,
-      author: '',
+      ...dto,
+      authorID: '',
       createDate: dayjs().toDate(),
       lastEditDate: dayjs().toDate(),
       postStatus: PostStatus.Published,
       isReposted: false,
       likesCount: 0,
       commentsCount: 0,
-      tags,
-      link,
-      linkDescription,
-      photo,
-      videoTitle,
-      videoLink,
-      quoteText,
-      quoteAuthor,
-      textTitle,
-      textNotice,
-      textContent,
+      comments: [],
     };
 
-    const publicationEntity = await new PublicationEntity(post);
+    const publicationEntity = new PublicationEntity(post);
 
     this.publicationRepository.save(publicationEntity);
-
+    // console.log(publicationEntity.id);
     return publicationEntity;
   }
 
@@ -76,7 +52,7 @@ export class PublicationService {
     this.publicationRepository.deleteById(publicationID);
   }
 
-  public async editPost(dto: CreatePublicationDto, id: string): Promise<PublicationEntity> {
+  public async editPost(dto: UpdatePublicationDto, id: string): Promise<PublicationEntity> {
     const publication = (await this.publicationRepository.findById(id)).toPOJO();
     const editedPublication = {
       ...publication,

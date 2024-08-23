@@ -72,7 +72,7 @@ export class PublicationRdo {
     example: '#news, #lifestyle',
   })
   @Expose()
-  public tags: string[];
+  public tags: string;
 
   @ApiProperty({
     description: 'Link to original source',

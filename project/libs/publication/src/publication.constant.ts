@@ -6,3 +6,5 @@ export const PublicationResponseMessage = {
   PublicationEdited: 'The publication has been successfully edited.',
   PublicationDataError: 'The data is incorrect.',
 } as const;
+
+export const MAX_POST_LIMIT = 25;

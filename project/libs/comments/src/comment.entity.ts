@@ -3,7 +3,7 @@ import { Entity, StorableEntity, Comment } from '@project/core';
 export class CommentEntity extends Entity implements StorableEntity<Comment> {
   public publicationId: string;
   public commentText: string;
-  public commentAuthor: string;
+  public commentAuthorId: string;
   public createCommentDate: Date;
 
   constructor(comment?: Comment) {
@@ -15,9 +15,9 @@ export class CommentEntity extends Entity implements StorableEntity<Comment> {
     if (!comment) {
       return;
     }
-    this.id = comment.id ?? '';
+    this.id = comment.id;
     this.commentText = comment.commentText;
-    this.commentAuthor = comment.commentAuthor;
+    this.commentAuthorId = comment.commentAuthorId;
     this.createCommentDate = comment.createCommentDate;
     this.publicationId = comment.publicationId;
   }
@@ -25,7 +25,7 @@ export class CommentEntity extends Entity implements StorableEntity<Comment> {
     return {
       id: this.id,
       commentText: this.commentText,
-      commentAuthor: this.commentAuthor,
+      commentAuthorId: this.commentAuthorId,
       createCommentDate: this.createCommentDate,
       publicationId: this.publicationId,
     };
