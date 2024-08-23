@@ -92,15 +92,4 @@ export class PublicationRepository extends BasePostgresRepository<PublicationEnt
 
     return records.map((record) => this.createEntityFromDocument(record as Post));
   }
-
-  // public getPostCollection(): Post[] {
-  //   const collection = [];
-  //   this.entities.forEach((value, key) => {
-  //     collection.push({
-  //       ...value,
-  //       key,
-  //     });
-  //   });
-  //   return collection;
-  // }
 }

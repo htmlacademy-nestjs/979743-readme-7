@@ -15,7 +15,7 @@ export class CommentEntity extends Entity implements StorableEntity<Comment> {
     if (!comment) {
       return;
     }
-    this.id = comment.id ?? '';
+    this.id = comment.id;
     this.commentText = comment.commentText;
     this.commentAuthorId = comment.commentAuthorId;
     this.createCommentDate = comment.createCommentDate;
