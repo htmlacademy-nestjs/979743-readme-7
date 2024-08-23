@@ -4,6 +4,7 @@ import { PublicationService } from './publication.service';
 import { CreatePublicationDto } from './dto/create-publication.dto';
 import { ChangeCountDto } from './dto/change-count.dto';
 import { PublicationResponseMessage } from './publication.constant';
+import { UpdatePublicationDto } from './dto/update-publication.dto';
 
 @ApiTags('post')
 @Controller('post')
@@ -64,7 +65,7 @@ export class PublicationController {
     description: PublicationResponseMessage.PublicationNotFound,
   })
   @Patch(':id')
-  public async editPost(@Param('id') id: string, @Body() dto: CreatePublicationDto) {
+  public async editPost(@Param('id') id: string, @Body() dto: UpdatePublicationDto) {
     const editedPost = await this.publicationService.editPost(dto, id);
     return editedPost.toPOJO();
   }

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, HttpStatus } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, HttpStatus, FileValidator } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CommentsService } from './comment.service';
 import { CommentDto } from './dto/comment.dto';
@@ -21,6 +21,7 @@ export class CommentController {
   public async create(@Body() dto: CommentDto) {
     const newComment = await this.commentService.createComment(dto);
     return newComment.toPOJO();
+    // return fillDto(CommentRdo, newComment.toPOJO());
   }
 
   @ApiResponse({
@@ -47,20 +48,6 @@ export class CommentController {
   @Get(':postId')
   public async getCommentsForPost(@Param('postId') postId: string) {
     const commentsCollection = this.commentService.getCommentsForPost(postId);
-    return commentsCollection;
-  }
-
-  @ApiResponse({
-    status: HttpStatus.OK,
-    description: CommentResponseMessage.CommentCollectionLoaded,
-  })
-  @ApiResponse({
-    status: HttpStatus.NOT_FOUND,
-    description: CommentResponseMessage.CommentCollectionEmpty,
-  })
-  @Get()
-  public async getCommentCollection() {
-    const commentsCollection = this.commentService.getAllComments();
     return commentsCollection;
   }
 }

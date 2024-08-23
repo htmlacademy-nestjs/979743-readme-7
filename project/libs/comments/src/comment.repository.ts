@@ -32,9 +32,11 @@ export class CommentRepository extends BasePostgresRepository<CommentEntity, Com
     });
   }
 
-  public async getCommentCollection(): Promise<Comment[]> {
+  public async getCommentCollection(postId: string): Promise<Comment[]> {
     const documents = await this.client.comment.findMany({
-      take: MAX_COMMMENT_LIMIT,
+      where: {
+        publicationId: postId,
+      },
     });
     return documents.map((document) => this.createEntityFromDocument(document));
   }

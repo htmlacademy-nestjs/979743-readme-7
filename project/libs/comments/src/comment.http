@@ -1,4 +1,5 @@
 
+# Create new comment
 POST http://localhost:3000/api/comments/new HTTP/1.1
 Content-Type: application/json
 
@@ -9,10 +10,14 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/comments/57a633c4-25fc-43d7-9a9c-7e852fd3cd9b HTTP/1.1
+
+# Get comments for post
+GET http://localhost:3000/api/comments/0bedc936-814a-4d79-9fc8-797cff71c970 HTTP/1.1
 
 ###
 
+
+# Delete comment
 DELETE http://localhost:3000/api/comments/e420e062-473f-43bc-8ed3-f6c0ec4d37e7 HTTP/1.1
 Content-Type: application/json
 

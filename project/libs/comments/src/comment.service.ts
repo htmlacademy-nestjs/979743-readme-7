@@ -45,13 +45,6 @@ export class CommentsService {
   }
 
   public async getCommentsForPost(postId: string): Promise<Comment[]> {
-    const commentCollection = await this.commentRepository.getCommentCollection();
-    const filteredCollection = commentCollection.filter((comment) => comment.publicationId === postId);
-    return filteredCollection;
-  }
-
-  public async getAllComments(): Promise<Comment[]> {
-    const allComments = await this.commentRepository.getCommentCollection();
-    return allComments;
+    return this.commentRepository.getCommentCollection(postId);
   }
 }
