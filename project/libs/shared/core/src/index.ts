@@ -9,3 +9,6 @@ export { PostStatus } from './types/post-status.enam';
 export { PostType } from './types/post-type.enam';
 export { Comment } from './types/comment.interface';
 export { CountChange } from './types/count-change.enum';
+
+export { PaginationResult } from './interfaces/pagination.interface';
+export { SortDirection } from './interfaces/sort-direction.interface';

@@ -1,10 +1,13 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, HttpStatus } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, HttpStatus, HttpCode, Query } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { fillDto } from '@project/helpers';
 import { PublicationService } from './publication.service';
 import { CreatePublicationDto } from './dto/create-publication.dto';
 import { ChangeCountDto } from './dto/change-count.dto';
 import { PublicationResponseMessage } from './publication.constant';
 import { UpdatePublicationDto } from './dto/update-publication.dto';
+import { PublicationQuery } from './publication.query';
+import { PublicationWithPaginationRdo } from './rdo/publication-with-pagination.rdo';
 
 @ApiTags('post')
 @Controller('post')
@@ -48,6 +51,7 @@ export class PublicationController {
     description: PublicationResponseMessage.PublicationNotFound,
   })
   @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   public async deletePost(@Param('id') id: string) {
     await this.publicationService.deletePost(id);
   }
@@ -82,5 +86,15 @@ export class PublicationController {
   public async changeLikesCount(@Param('id') id: string, @Body() dto: ChangeCountDto) {
     const editedPost = await this.publicationService.changeLikesCount(dto, id);
     return editedPost.toPOJO();
+  }
+
+  @Get('/')
+  public async index(@Query() query: PublicationQuery) {
+    const postsWithPagination = await this.publicationService.getAllPosts(query);
+    const result = {
+      ...postsWithPagination,
+      entities: postsWithPagination.entities.map((post) => post.toPOJO()),
+    };
+    return fillDto(PublicationWithPaginationRdo, result);
   }
 }

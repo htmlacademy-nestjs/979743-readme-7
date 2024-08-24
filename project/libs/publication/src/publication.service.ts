@@ -7,10 +7,16 @@ import { PublicationEntity } from './publication.entity';
 import { PublicationResponseMessage } from './publication.constant';
 import { ChangeCountDto } from './dto/change-count.dto';
 import { UpdatePublicationDto } from './dto/update-publication.dto';
+import { PublicationQuery } from './publication.query';
+import { PaginationResult } from '@project/core';
 
 @Injectable()
 export class PublicationService {
   constructor(private readonly publicationRepository: PublicationRepository) {}
+
+  public async getAllPosts(query?: PublicationQuery): Promise<PaginationResult<PublicationEntity>> {
+    return this.publicationRepository.find(query);
+  }
 
   public async createPost(dto: CreatePublicationDto): Promise<PublicationEntity> {
     const post = {
@@ -43,13 +49,11 @@ export class PublicationService {
   }
 
   public async deletePost(publicationID: string) {
-    const publication = await this.publicationRepository.findById(publicationID);
-
-    if (!publication) {
+    try {
+      this.publicationRepository.deleteById(publicationID);
+    } catch {
       throw new NotFoundException(PublicationResponseMessage.PublicationNotFound);
     }
-
-    this.publicationRepository.deleteById(publicationID);
   }
 
   public async editPost(dto: UpdatePublicationDto, id: string): Promise<PublicationEntity> {

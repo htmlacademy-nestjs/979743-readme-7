@@ -1,7 +1,8 @@
 import { PostStatus } from '@project/core';
-import { Expose } from 'class-transformer';
+import { Expose, Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
 import { PostType } from 'libs/shared/core/src/types/post-type.enam';
+import { CommentRdo } from '@project/comments';
 
 export class PublicationRdo {
   @ApiProperty({
@@ -12,60 +13,74 @@ export class PublicationRdo {
   public id: string;
 
   @ApiProperty({
+    description: 'ID of original publication for repost',
+    example: 'c493b91d-d1aa-4bb0-b133-ea5830044510',
+  })
+  @Expose()
+  public originalID: string;
+
+  @ApiProperty({
     description: 'The type of publication',
     example: 'photo',
   })
   @Expose()
-  public type: PostType;
+  public type: string;
 
   @ApiProperty({
     description: 'The author of publication',
     example: 'Anna GW',
   })
   @Expose()
-  public author: string;
+  public authorID: string;
+
+  @ApiProperty({
+    description: 'ID of original publication author for repost',
+    example: 'c493b91d-d1aa-4bb0-b133-ea5830044510',
+  })
+  @Expose()
+  public originalAuthorID: string;
 
   @ApiProperty({
     description: 'Create publication date (ISO format)',
     example: '2024-08-12',
   })
   @Expose()
-  public createDate: Date;
+  public createDate: string;
 
   @ApiProperty({
     description: 'Last edit publication date (ISO format)',
     example: '2024-08-12',
   })
   @Expose()
-  public lastEditDate: Date;
+  public lastEditDate: string;
 
   @ApiProperty({
     description: 'Status of publication',
     example: 'published',
   })
   @Expose()
-  public postStatus: PostStatus;
+  public postStatus: string;
 
   @ApiProperty({
     description: 'Flag of publication repost',
     example: 'false',
   })
   @Expose()
-  public isReposted: boolean;
+  public isReposted: string;
 
   @ApiProperty({
     description: 'Number of likes',
     example: 100,
   })
   @Expose()
-  public likesCount: number;
+  public likesCount: string;
 
   @ApiProperty({
     description: 'Number of comments',
     example: 15,
   })
   @Expose()
-  public commentsCount: number;
+  public commentsCount: string;
 
   @ApiProperty({
     description: 'Publication tags',
@@ -143,4 +158,8 @@ export class PublicationRdo {
   })
   @Expose()
   public textContent: string;
+
+  @Expose()
+  @Type(() => CommentRdo)
+  public comments: CommentRdo[];
 }
