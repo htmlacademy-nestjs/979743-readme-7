@@ -12,3 +12,6 @@ export { CountChange } from './types/count-change.enum';
 
 export { PaginationResult } from './interfaces/pagination.interface';
 export { SortDirection } from './interfaces/sort-direction.interface';
+
+export { Token } from './interfaces/token.interface';
+export { TokenPayload } from './interfaces/token-payload.interface';
