@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsOptional, IsString } from 'class-validator';
+import { IsEmail, IsOptional, IsString, MinLength, MaxLength } from 'class-validator';
 import { AuthenticationValidateMessage } from '../authentication.constant';
+import { UserDtoValidation } from '../authentication.constant';
 
 export class CreateUserDto {
   @ApiProperty({
@@ -11,10 +12,12 @@ export class CreateUserDto {
   public email: string;
 
   @ApiProperty({
-    description: 'User first name',
+    description: 'User surname and name',
     example: 'Keks',
   })
   @IsString()
+  @MinLength(UserDtoValidation.UserNameMinLength)
+  @MaxLength(UserDtoValidation.UserNameMaxLength)
   public name: string;
 
   @ApiProperty({
@@ -30,5 +33,7 @@ export class CreateUserDto {
     example: '123456',
   })
   @IsString()
+  @MinLength(UserDtoValidation.PasswordMinLength)
+  @MaxLength(UserDtoValidation.PasswordMaxLength)
   public password: string;
 }

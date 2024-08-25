@@ -9,6 +9,7 @@ import { ChangeCountDto } from './dto/change-count.dto';
 import { UpdatePublicationDto } from './dto/update-publication.dto';
 import { PublicationQuery } from './publication.query';
 import { PaginationResult } from '@project/core';
+import { PublicationFactory } from './publication.factory';
 
 @Injectable()
 export class PublicationService {
@@ -19,22 +20,8 @@ export class PublicationService {
   }
 
   public async createPost(dto: CreatePublicationDto): Promise<PublicationEntity> {
-    const post = {
-      ...dto,
-      authorID: '',
-      createDate: dayjs().toDate(),
-      lastEditDate: dayjs().toDate(),
-      postStatus: PostStatus.Published,
-      isReposted: false,
-      likesCount: 0,
-      commentsCount: 0,
-      comments: [],
-    };
-
-    const publicationEntity = new PublicationEntity(post);
-
+    const publicationEntity = PublicationFactory.createPostFromDto(dto);
     this.publicationRepository.save(publicationEntity);
-    // console.log(publicationEntity.id);
     return publicationEntity;
   }
 

@@ -1,6 +1,7 @@
-import { IsOptional, ValidateIf, IsNotEmpty, IsString } from 'class-validator';
+import { IsOptional, ValidateIf, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { PostType } from 'libs/shared/core/src/types/post-type.enam';
+import { PublicationDtoValidation } from '../publication.constant';
 
 export class CreatePublicationDto {
   @ApiProperty({
@@ -31,6 +32,7 @@ export class CreatePublicationDto {
   })
   @ValidateIf((o) => o.type === PostType.Link)
   @IsNotEmpty()
+  @MaxLength(PublicationDtoValidation.LinkDescriptionMaxLength)
   public linkDescription?: string;
 
   @ApiProperty({
@@ -47,6 +49,8 @@ export class CreatePublicationDto {
   })
   @ValidateIf((o) => o.type === PostType.Video)
   @IsNotEmpty()
+  @MaxLength(PublicationDtoValidation.VideoTitleMaxLength)
+  @MinLength(PublicationDtoValidation.VideoTitleMinLength)
   public videoTitle?: string;
 
   @ApiProperty({
@@ -63,6 +67,8 @@ export class CreatePublicationDto {
   })
   @ValidateIf((o) => o.type === PostType.Quote)
   @IsNotEmpty()
+  @MinLength(PublicationDtoValidation.QuoteTextMinLength)
+  @MaxLength(PublicationDtoValidation.QuoteTextMaxLength)
   public quoteText?: string;
 
   @ApiProperty({
@@ -71,6 +77,8 @@ export class CreatePublicationDto {
   })
   @ValidateIf((o) => o.type === PostType.Quote)
   @IsNotEmpty()
+  @MinLength(PublicationDtoValidation.QuoteAuthorMinLength)
+  @MaxLength(PublicationDtoValidation.QuoteAuthorMaxLength)
   public quoteAuthor?: string;
 
   @ApiProperty({
@@ -79,6 +87,8 @@ export class CreatePublicationDto {
   })
   @ValidateIf((o) => o.type === PostType.Text)
   @IsNotEmpty()
+  @MinLength(PublicationDtoValidation.TextTitleMinLength)
+  @MaxLength(PublicationDtoValidation.TextTitleMaxLength)
   public textTitle?: string;
 
   @ApiProperty({
@@ -87,6 +97,8 @@ export class CreatePublicationDto {
   })
   @ValidateIf((o) => o.type === PostType.Text)
   @IsNotEmpty()
+  @MinLength(PublicationDtoValidation.TextNoticeMinLength)
+  @MaxLength(PublicationDtoValidation.TextNoticeMaxLength)
   public textNotice?: string;
 
   @ApiProperty({
@@ -95,5 +107,7 @@ export class CreatePublicationDto {
   })
   @ValidateIf((o) => o.type === PostType.Text)
   @IsNotEmpty()
+  @MinLength(PublicationDtoValidation.TextContentMinLength)
+  @MaxLength(PublicationDtoValidation.TextContentMaxLength)
   public textContent?: string;
 }
