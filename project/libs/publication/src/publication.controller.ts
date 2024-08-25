@@ -8,6 +8,7 @@ import { PublicationResponseMessage } from './publication.constant';
 import { UpdatePublicationDto } from './dto/update-publication.dto';
 import { PublicationQuery } from './publication.query';
 import { PublicationWithPaginationRdo } from './rdo/publication-with-pagination.rdo';
+import { PublicationRdo } from './rdo/publication.rdo';
 
 @ApiTags('post')
 @Controller('post')

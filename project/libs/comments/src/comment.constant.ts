@@ -12,3 +12,8 @@ export const CommentResponseMessage = {
 } as const;
 
 export const MAX_COMMMENT_LIMIT = 50;
+
+export enum CommentDtoValidation {
+  CommentTextMinLength = 10,
+  CommentTextMaxLength = 300,
+}

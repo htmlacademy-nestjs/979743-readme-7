@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsString, MinLength, MaxLength, IsUUID } from 'class-validator';
+import { CommentDtoValidation } from '../comment.constant';
 
 export class CommentDto {
   @ApiProperty({
@@ -7,6 +8,7 @@ export class CommentDto {
     example: '134ce8babd-cc30-4805-9b12-d9420398e7c5',
   })
   @IsString()
+  @IsUUID()
   public publicationId: string;
 
   @ApiProperty({
@@ -14,5 +16,7 @@ export class CommentDto {
     example: 'Realy cool post!',
   })
   @IsString()
+  @MinLength(CommentDtoValidation.CommentTextMinLength)
+  @MaxLength(CommentDtoValidation.CommentTextMaxLength)
   public commentText: string;
 }
