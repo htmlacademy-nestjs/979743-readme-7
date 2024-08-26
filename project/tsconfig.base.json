@@ -21,6 +21,8 @@
       "@project/comments": ["libs/comments/src/index.ts"],
       "@project/core": ["libs/shared/core/src/index.ts"],
       "@project/data-access": ["libs/shared/data-access/src/index.ts"],
+      "@project/files-config": ["libs/files/config/src/index.ts"],
+      "@project/files-uploader": ["libs/files/uploader/src/index.ts"],
       "@project/helpers": ["libs/shared/helpers/src/index.ts"],
       "@project/post-list": ["libs/post-list/src/index.ts"],
       "@project/post-module": ["libs/post/post-module/src/index.ts"],
