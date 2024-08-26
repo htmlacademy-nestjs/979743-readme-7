@@ -15,3 +15,6 @@ export { SortDirection } from './interfaces/sort-direction.interface';
 
 export { Token } from './interfaces/token.interface';
 export { TokenPayload } from './interfaces/token-payload.interface';
+
+export { File } from './types/file.interface';
+export { StoredFile } from './types/stored-file.interface';
