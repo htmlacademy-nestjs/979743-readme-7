@@ -7,28 +7,21 @@ import { PublicationEntity } from './publication.entity';
 import { PublicationResponseMessage } from './publication.constant';
 import { ChangeCountDto } from './dto/change-count.dto';
 import { UpdatePublicationDto } from './dto/update-publication.dto';
+import { PublicationQuery } from './publication.query';
+import { PaginationResult } from '@project/core';
+import { PublicationFactory } from './publication.factory';
 
 @Injectable()
 export class PublicationService {
   constructor(private readonly publicationRepository: PublicationRepository) {}
 
+  public async getAllPosts(query?: PublicationQuery): Promise<PaginationResult<PublicationEntity>> {
+    return this.publicationRepository.find(query);
+  }
+
   public async createPost(dto: CreatePublicationDto): Promise<PublicationEntity> {
-    const post = {
-      ...dto,
-      authorID: '',
-      createDate: dayjs().toDate(),
-      lastEditDate: dayjs().toDate(),
-      postStatus: PostStatus.Published,
-      isReposted: false,
-      likesCount: 0,
-      commentsCount: 0,
-      comments: [],
-    };
-
-    const publicationEntity = new PublicationEntity(post);
-
+    const publicationEntity = PublicationFactory.createPostFromDto(dto);
     this.publicationRepository.save(publicationEntity);
-    // console.log(publicationEntity.id);
     return publicationEntity;
   }
 
@@ -43,13 +36,11 @@ export class PublicationService {
   }
 
   public async deletePost(publicationID: string) {
-    const publication = await this.publicationRepository.findById(publicationID);
-
-    if (!publication) {
+    try {
+      this.publicationRepository.deleteById(publicationID);
+    } catch {
       throw new NotFoundException(PublicationResponseMessage.PublicationNotFound);
     }
-
-    this.publicationRepository.deleteById(publicationID);
   }
 
   public async editPost(dto: UpdatePublicationDto, id: string): Promise<PublicationEntity> {

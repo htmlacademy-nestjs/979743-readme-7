@@ -35,5 +35,5 @@ export class CommentRdo {
     example: '2024-08-12',
   })
   @Expose()
-  public createCommentDate: Date;
+  public createCommentDate: string;
 }
