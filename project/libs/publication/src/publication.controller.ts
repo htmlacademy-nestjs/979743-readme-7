@@ -9,6 +9,7 @@ import { UpdatePublicationDto } from './dto/update-publication.dto';
 import { PublicationQuery } from './publication.query';
 import { PublicationWithPaginationRdo } from './rdo/publication-with-pagination.rdo';
 import { PublicationRdo } from './rdo/publication.rdo';
+import { Post as PostInterface } from '@project/core';
 
 @ApiTags('post')
 @Controller('post')
@@ -27,6 +28,7 @@ export class PublicationController {
   public async create(@Body() dto: CreatePublicationDto) {
     const newPublication = await this.publicationService.createPost(dto);
     return newPublication.toPOJO();
+    // fillDto<PublicationRdo, PostInterface>(PublicationRdo, newPublication.toPOJO());
   }
 
   @ApiResponse({

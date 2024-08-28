@@ -8,6 +8,7 @@ import { AuthenticationResponseMessage } from './authentication.constant';
 import { LoggedUserRdo } from './rdo/logged-user.rdo';
 import { UserRdo } from './rdo/user.rdo';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { MongoIdValidationPipe } from '@project/pipes';
 
 @ApiTags('user')
 @Controller('user')
@@ -40,7 +41,6 @@ export class AuthenticationController {
   @Post('login')
   public async login(@Body() dto: LoginUserDto) {
     const verifiedUser = await this.authService.verifyUser(dto);
-    // return verifiedUser.toPOJO();
     const userToken = await this.authService.createUserToken(verifiedUser);
     return fillDto(LoggedUserRdo, { ...verifiedUser.toPOJO(), ...userToken });
   }
@@ -56,7 +56,7 @@ export class AuthenticationController {
   })
   @UseGuards(JwtAuthGuard)
   @Get(':id')
-  public async show(@Param('id') id: string) {
+  public async show(@Param('id', MongoIdValidationPipe) id: string) {
     const existUser = await this.authService.getUser(id);
     return existUser.toPOJO();
   }
